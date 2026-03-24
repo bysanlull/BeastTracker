@@ -1,0 +1,19 @@
+# Render Blueprint: https://render.com/docs/blueprint-specification
+# Deploy: New → Blueprint → connect this repo, or paste this file.
+
+services:
+  - type: web
+    name: beast-tracker
+    runtime: python
+    plan: free
+    region: frankfurt
+    buildCommand: pip install -r requirements.txt
+    startCommand: bash start.sh
+    healthCheckPath: /
+    envVars:
+      - key: LEAGUE
+        value: Mirage
+      - key: POLL_INTERVAL
+        value: "3"
+      - key: PYTHON_VERSION
+        value: "3.12.1"
